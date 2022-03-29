@@ -1,15 +1,14 @@
 <template>
-  <main-feeds />
+  <hello-world />
 </template>
 
 <script>
-// eslint-disable-next-line import/no-absolute-path
-import { MainFeeds } from './pages/feeds'
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    MainFeeds
+    HelloWorld
   }
 }
 </script>
