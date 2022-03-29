@@ -2,7 +2,7 @@
   <div class="topline">
     <top-line>
       <template #headline>
-        <h1>headline</h1>
+        <icon-comp />
       </template>
       <template #content>
         <h2>content</h2>
@@ -12,12 +12,14 @@
 </template>
 
 <script>
-import TopLine from '../../components/topline/TopLine.vue'
+import { TopLine } from '../../components/topline/TopLine.vue'
+import { IconComp } from '../../icons/'
 
 export default {
   name: 'MainFeeds',
   components: {
-    TopLine
+    TopLine,
+    IconComp
   }
 }
 </script>
