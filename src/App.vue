@@ -1,14 +1,16 @@
 <template>
-  <hello-world />
+  <main-feeds />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import MainFeeds from './pages/mainfeeds/MainFeeds.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld,
+    MainFeeds
   }
 }
 </script>
