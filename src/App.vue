@@ -3,13 +3,11 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
 import MainFeeds from './pages/mainfeeds/MainFeeds.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
     MainFeeds
   }
 }
