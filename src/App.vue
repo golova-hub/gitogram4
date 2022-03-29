@@ -1,15 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <main-feeds />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// eslint-disable-next-line import/no-absolute-path
+import { MainFeeds } from './pages/feeds'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainFeeds
   }
 }
 </script>
