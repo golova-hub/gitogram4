@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 html, body {
-  height: 100%;
   margin: 0;
 }
 
@@ -23,9 +22,15 @@ svg {
 .wrapper {
   position: relative;
   overflow: hidden;
-  height: 100%;
 }
 .g-container {
   width: 1200px;
   margin: 0 auto;
+}
+.headline {
+  display: flex;
+  align-items: flex-end;
+  .icon-home {
+    margin-left: auto;
+  }
 }

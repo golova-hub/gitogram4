@@ -1,12 +1,21 @@
 <template>
-  <home-icon />
+  <component :is="name" />
 </template>
 
 <script>
-import { HomeIcon } from './variants'
+import * as icons from './variants'
 
 export default {
   name: 'IconComp',
-  components: { HomeIcon }
+  components: { ...icons },
+  props: {
+    name: {
+      type: String,
+      required: true,
+      validator (value) {
+        return Object.keys(icons).includes(value)
+      }
+    }
+  }
 }
 </script>

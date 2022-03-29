@@ -3,10 +3,10 @@
     <div class="g-container">
       <div class="headline">
         <slot name="headline" />
-        </div>
+      </div>
       <div class="content" v-if="$slots.content">
         <slot name="content" />
-        </div>
+      </div>
     </div>
   </div>
 </template>
