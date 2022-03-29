@@ -1,0 +1,30 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #262626;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+svg {
+  display: block;
+}
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.g-container {
+  width: 1200px;
+  margin: 0 auto;
+}
