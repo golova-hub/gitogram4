@@ -8,6 +8,9 @@
         <div class="icon-home">
          <icon-comp name="HomeIcon"/>
         </div>
+        <div class="profile-photo">
+         <profile-photo></profile-photo>
+        </div>
         <div class="icon-exit">
          <icon-comp name="ExitIcon"/>
         </div>
@@ -30,6 +33,7 @@
 import { TopLine } from '../../components/topline/'
 import { IconComp } from '../../icons/'
 import { StoryUserItem } from '../../components/storyUserItem/'
+import { ProfilePhoto } from '../../components/profilePhoto/'
 import stories from './data.json'
 
 export default {
@@ -37,7 +41,8 @@ export default {
   components: {
     TopLine,
     IconComp,
-    StoryUserItem
+    StoryUserItem,
+    ProfilePhoto
   },
   data () {
     return {

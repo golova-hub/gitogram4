@@ -19,6 +19,7 @@ img {
 svg {
   display: block;
 }
+
 .wrapper {
   position: relative;
   overflow: hidden;
@@ -29,7 +30,7 @@ svg {
 }
 .headline {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   .icon-home {
     margin-left: auto;
   }

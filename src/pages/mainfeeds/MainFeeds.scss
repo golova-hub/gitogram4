@@ -8,3 +8,14 @@
   width: 25px;
   margin-left: 25px;
 }
+.profile-photo {
+  margin-left: 24px;
+}
+.stories {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 45px;
+}
