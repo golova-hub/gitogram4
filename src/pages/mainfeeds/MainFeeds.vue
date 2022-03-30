@@ -27,6 +27,12 @@
       </template>
     </top-line>
   </div>
+  <div class="g-container">
+    <div class="post-item">
+      <post-item>
+      </post-item>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -34,6 +40,7 @@ import { TopLine } from '../../components/topline/'
 import { IconComp } from '../../icons/'
 import { StoryUserItem } from '../../components/storyUserItem/'
 import { ProfilePhoto } from '../../components/profilePhoto/'
+import { PostItem } from '../../components/postItem/'
 import stories from './data.json'
 
 export default {
@@ -42,7 +49,8 @@ export default {
     TopLine,
     IconComp,
     StoryUserItem,
-    ProfilePhoto
+    ProfilePhoto,
+    PostItem
   },
   data () {
     return {
