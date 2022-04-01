@@ -30,6 +30,11 @@
   <div class="g-container">
     <div class="post-item">
       <post-item>
+        <template #taskcard>
+          <div class="taskcard-title">Vue.js</div>
+          <p class="taskcard-tasktext">JavaScript framework for building interactive web applications ⚡</p>
+          <div class="btns-group"></div>
+        </template>
       </post-item>
     </div>
   </div>

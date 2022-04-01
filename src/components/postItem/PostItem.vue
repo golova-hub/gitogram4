@@ -1,7 +1,12 @@
 <template>
-   <div class="post-user-profile">
-      <post-user-profile></post-user-profile>
+  <div class="post-item-content">
+    <div class="post-user-profile">
+        <post-user-profile></post-user-profile>
     </div>
+    <div class="taskcard">
+      <slot name="taskcard" />
+    </div>
+  </div>
 </template>
 <script>
 
