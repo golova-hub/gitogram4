@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     togglerClick () {
-      this.$emit('classChanged', 'hideComments')
+      this.$emit('classChanged', this.toggler)
     }
   }
 }

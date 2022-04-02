@@ -10,7 +10,7 @@
       <div class="post-comment-toggler">
         <post-comment-toggler v-on:classChanged="handler"></post-comment-toggler>
       </div>
-      <div class="post-comments">
+      <div :class='{"hide-issues": childToggler}'  class="post-comments">
         <div class="post-comment-item">
           <b>joshua_l</b> Enable performance measuring in production, at the user's request
         </div>
@@ -37,9 +37,13 @@ export default {
     PostCommentToggler
   },
   methods: {
-    handler (newclass) {
-      this.newclass = newclass
-      // console.log(newclass)
+    handler (toggler) {
+      this.childToggler = toggler
+    }
+  },
+  data () {
+    return {
+      childToggler: false
     }
   }
 }
