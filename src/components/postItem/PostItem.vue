@@ -39,7 +39,7 @@ export default {
   methods: {
     handler (newclass) {
       this.newclass = newclass
-      console.log(newclass)
+      // console.log(newclass)
     }
   }
 }
