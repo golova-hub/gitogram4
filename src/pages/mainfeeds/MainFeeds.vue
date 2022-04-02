@@ -64,6 +64,18 @@ export default {
   data () {
     return {
       stories
+      // postItems: [
+      //   {
+      //     id: 0,
+      //     postAvatar: 'https://picsum.photos/300/300',
+      //     postUsername: 'Jone Doe'
+      //   },
+      //   {
+      //     id: 1,
+      //     postAvatar: 'https://picsum.photos/300/300',
+      //     postUsername: 'Camille'
+      //   }
+      // ]
     }
   }
 }

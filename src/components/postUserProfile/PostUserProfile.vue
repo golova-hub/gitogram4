@@ -10,6 +10,16 @@
 export default {
   name: 'PostUserProfile',
   template: 'PostUserProfile',
+  // props: {
+  //   postAvatar: {
+  //     type: String,
+  //     requaired: true
+  //   },
+  //   postUsername: {
+  //     type: String,
+  //     requaired: true
+  //   }
+  // },
   data () {
     return {
       postAvatar: 'https://picsum.photos/300/300',
