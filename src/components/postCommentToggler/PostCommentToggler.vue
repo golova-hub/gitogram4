@@ -1,10 +1,10 @@
 <template>
-  <a v-on:click="toggler = !toggler"  :class="{active:toggler}" class="post-toggler-btn" role="button">
+  <div @click="togglerClick" v-on:click="toggler = !toggler"  :class="{active:toggler}" class="post-toggler-btn" role="button">
     <span>{{toggler ? 'Hide issues' : 'Show issues'}}</span>
     <div class="icon-modifier">
       <icon-comp name="ModifierIcon"/>
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -18,6 +18,11 @@ export default {
   data () {
     return {
       toggler: true
+    }
+  },
+  methods: {
+    togglerClick () {
+      this.$emit('classChanged', 'hideComments')
     }
   }
 }

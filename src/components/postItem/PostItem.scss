@@ -10,3 +10,20 @@
   margin: 16px 0;
   padding: 24px 20px;
 }
+.post-comments {
+  .post-comment-item {
+    display: block;
+    margin-bottom: 8px;
+  }
+  &.hide-issues .post-comment-item {
+    display: none;
+  }
+}
+.post-item-date {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgba(0, 0, 0, 0.4);
+  margin-top: 16px;
+}

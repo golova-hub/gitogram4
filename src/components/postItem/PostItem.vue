@@ -6,8 +6,22 @@
     <div class="taskcard">
       <slot name="taskcard" />
     </div>
-    <div class="post-comment-toggler">
-      <post-comment-toggler v-on:textChanged="handler"></post-comment-toggler>
+    <div class="post-item-footer">
+      <div class="post-comment-toggler">
+        <post-comment-toggler v-on:classChanged="handler"></post-comment-toggler>
+      </div>
+      <div class="post-comments">
+        <div class="post-comment-item">
+          <b>joshua_l</b> Enable performance measuring in production, at the user's request
+        </div>
+         <div class="post-comment-item">
+          <b>joshua_l</b> Enable performance measuring in production, at the user's request
+        </div>
+         <div class="post-comment-item">
+          <b>joshua_l</b> Enable performance measuring in production, at the user's request
+        </div>
+      </div>
+      <div class="post-item-date">15 may</div>
     </div>
   </div>
 </template>
@@ -21,6 +35,12 @@ export default {
   components: {
     PostUserProfile,
     PostCommentToggler
+  },
+  methods: {
+    handler (newclass) {
+      this.newclass = newclass
+      console.log(newclass)
+    }
   }
 }
 </script>
