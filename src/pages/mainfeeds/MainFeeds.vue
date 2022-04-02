@@ -32,8 +32,10 @@
       <post-item>
         <template #taskcard>
           <div class="taskcard-title">Vue.js</div>
-          <p class="taskcard-tasktext">JavaScript framework for building interactive web applications ⚡</p>
-          <div class="btns-group"></div>
+          <p class="taskcard-tasktext"><b>JavaScript</b> framework for building interactive web applications ⚡</p>
+          <div class="post-items-btns">
+            <post-item-btns></post-item-btns>
+          </div>
         </template>
       </post-item>
     </div>
@@ -46,6 +48,7 @@ import { IconComp } from '../../icons/'
 import { StoryUserItem } from '../../components/storyUserItem/'
 import { ProfilePhoto } from '../../components/profilePhoto/'
 import { PostItem } from '../../components/postItem/'
+import { PostItemBtns } from '../../components/postItemBtns/'
 import stories from './data.json'
 
 export default {
@@ -55,7 +58,8 @@ export default {
     IconComp,
     StoryUserItem,
     ProfilePhoto,
-    PostItem
+    PostItem,
+    PostItemBtns
   },
   data () {
     return {

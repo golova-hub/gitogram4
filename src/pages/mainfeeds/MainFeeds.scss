@@ -23,3 +23,17 @@
   max-width: 979px;
   margin: 32px auto;
 }
+.post-items-btns {
+  display: flex;
+  align-items: center;
+}
+.taskcard-title {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 28px;
+  margin-bottom: 15px;
+}
+.taskcard-tasktext {
+  line-height: 160%;
+  margin-bottom: 32px;
+}

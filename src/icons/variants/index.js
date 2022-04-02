@@ -1,3 +1,6 @@
 export { default as HomeIcon } from './HomeIcon.vue'
 export { default as LogoIcon } from './LogoIcon.vue'
 export { default as ExitIcon } from './ExitIcon.vue'
+export { default as StarIcon } from './StarIcon.vue'
+export { default as ForkIcon } from './ForkIcon.vue'
+export { default as ModifierIcon } from './ModifierIcon.vue'

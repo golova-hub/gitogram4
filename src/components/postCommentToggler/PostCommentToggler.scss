@@ -1,0 +1,17 @@
+.icon-modifier {
+  width: 10px;
+  min-width: 10px;
+  max-width: 10px;
+  margin-left: 5px;
+  // transform: rotate(-180deg);
+}
+.post-toggler-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &.active {
+    .icon-modifier {
+      transform: rotate(-180deg);
+    }
+  }
+}
