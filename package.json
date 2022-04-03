@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "node-sass": "^6.0.1",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -42,10 +43,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.0.5",
-    "sass": "^1.49.11",
-    "sass-loader": "^12.6.0",
     "storybook-addon-sass-postcss": "^0.1.0",
-    "vue-loader": "^16.8.3",
-    "webpack": "^5.71.0"
+    "vue-loader": "^16.8.3"
   }
 }

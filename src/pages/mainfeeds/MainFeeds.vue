@@ -33,9 +33,7 @@
         <template #taskcard>
           <div class="taskcard-title">Vue.js</div>
           <p class="taskcard-tasktext"><b>JavaScript</b> framework for building interactive web applications ⚡</p>
-          <div class="post-items-btns">
-            <post-item-btns></post-item-btns>
-          </div>
+          <post-item-btns></post-item-btns>
         </template>
       </post-item>
     </div>

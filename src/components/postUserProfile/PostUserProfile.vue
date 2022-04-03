@@ -1,8 +1,10 @@
 <template>
+<div class="g-dflex-center">
   <div class="post-avatar">
     <img :src="postAvatar" class="post-user-avatar" alt="User avatar" />
   </div>
   <div class="post-username">{{ postUsername }}</div>
+</div>
 </template>
 
 <script>

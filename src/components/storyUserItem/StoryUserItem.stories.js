@@ -2,16 +2,15 @@ import StoryUserItem from './StoryUserItem.vue'
 
 export default {
   title: 'StoryUserItem',
-  component: { StoryUserItem }
+  component: StoryUserItem
 }
 
-const template = (args) => ({
+const Template = (args) => ({
   components: { StoryUserItem },
-  // data () {
-  //   return { args }
-  // },
-  template: `<StoryUserItem :avatar='story.avatar'
-  :username='story.username'></StoryUserItem>`
+  setup () {
+    return { args }
+  },
+  template: '<story-user-item title="User Name" src="https://picsum.photos/300/300" alt="user pick"/>'
 })
 
-export const Default = template.bind({})
+export const Primary = Template.bind({})

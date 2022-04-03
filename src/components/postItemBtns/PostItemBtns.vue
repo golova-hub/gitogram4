@@ -1,4 +1,5 @@
 <template>
+<div class="post-items-btns">
   <button class="btns-item">
     <div class="icon-star">
       <icon-comp name="StarIcon"/>
@@ -17,6 +18,7 @@
   <button class="btns-item">
     <span>4</span>
   </button>
+</div>
 </template>
 
 <script>
