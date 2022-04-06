@@ -39,3 +39,19 @@ svg {
     margin-left: auto;
   }
 }
+.g-btn {
+  background: #31AE54;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: -0.15px;
+  color: #FFFFFF;
+  border: none;
+  min-width: 128px;
+  padding: 10px 32px;
+  &:hover {
+    cursor: pointer;
+  }
+}

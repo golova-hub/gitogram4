@@ -29,7 +29,8 @@
   </div>
   <div class="g-container">
     <div class="post-item">
-      <post-item>
+      <post-item :postAvatar="postAvatar"
+            :postUsername="postUsername">
         <template #taskcard>
           <div class="taskcard-title">Vue.js</div>
           <p class="taskcard-tasktext"><b>JavaScript</b> framework for building interactive web applications ⚡</p>
@@ -62,18 +63,6 @@ export default {
   data () {
     return {
       stories
-      // postItems: [
-      //   {
-      //     id: 0,
-      //     postAvatar: 'https://picsum.photos/300/300',
-      //     postUsername: 'Jone Doe'
-      //   },
-      //   {
-      //     id: 1,
-      //     postAvatar: 'https://picsum.photos/300/300',
-      //     postUsername: 'Camille'
-      //   }
-      // ]
     }
   }
 }

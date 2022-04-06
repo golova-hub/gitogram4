@@ -1,7 +1,8 @@
 <template>
   <div class="post-item-content">
     <div class="post-user-profile">
-        <post-user-profile>
+        <post-user-profile :postAvatar="postAvatar"
+            :postUsername="postUsername">
         </post-user-profile>
     </div>
     <div class="taskcard">
@@ -44,19 +45,9 @@ export default {
   },
   data () {
     return {
-      childToggler: false
-      // postItems: [
-      //   {
-      //     id: 0,
-      //     postAvatar: 'https://picsum.photos/300/300',
-      //     postUsername: 'Jone Doe'
-      //   },
-      //   {
-      //     id: 1,
-      //     postAvatar: 'https://picsum.photos/300/300',
-      //     postUsername: 'Camille'
-      //   }
-      // ]
+      childToggler: false,
+      postAvatar: 'https://picsum.photos/300/300',
+      postUsername: 'joshua_l'
     }
   }
 }

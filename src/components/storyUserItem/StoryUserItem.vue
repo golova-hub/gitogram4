@@ -1,13 +1,16 @@
 <template>
-  <div class="avatar">
-    <img :src="avatar" class="img" alt="User avatar" />
-  </div>
-  <div class="username">{{ username }}</div>
+  <button class="stories-avatar-btn">
+    <div class="avatar">
+      <img :src="avatar" class="img" alt="User avatar" />
+    </div>
+    <div class="username">{{ username }}</div>
+  </button>
 </template>
 <script>
 
 export default {
   name: 'StoryUserItem',
+  template: 'StoryUserItem',
   props: {
     avatar: {
       type: String,

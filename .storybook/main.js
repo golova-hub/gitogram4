@@ -1,7 +1,7 @@
 module.exports = {
   "stories": [
-    // "../src/**/*.stories.mdx",
-    "../src/**/*.stories.js"
+    "../src/**/*.stories.mdx",
+    "../src/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
     "@storybook/addon-links",
@@ -11,5 +11,7 @@ module.exports = {
   "framework": "@storybook/vue3",
   "core": {
     "builder": "@storybook/builder-webpack5"
-  }
+  },
+  babel: async (options) => ({
+  }),
 }

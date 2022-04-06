@@ -10,7 +10,11 @@ const Template = (args) => ({
   setup () {
     return { args }
   },
-  template: '<post-user-profile v-bind="args"/>'
+  template: '<post-user-profile v-bind="args" />'
 })
 
 export const Primary = Template.bind({})
+Primary.args = {
+  postAvatar: 'https://picsum.photos/300/300',
+  postUsername: 'Joe'
+}

@@ -10,7 +10,12 @@ const Template = (args) => ({
   setup () {
     return { args }
   },
-  template: '<story-user-item title="User Name" src="https://picsum.photos/300/300" alt="user pick"/>'
+  template: '<story-user-item v-bind="args"/>'
 })
 
 export const Primary = Template.bind({})
+Primary.args = {
+  avatar: 'https://picsum.photos/300/300',
+  username: 'Joe Moor',
+  alt: 'User pic'
+}
