@@ -28,12 +28,12 @@ export default {
   },
   methods: {
     showModal: function () {
-      this.$refs.modal.show = true
+      this.$refs.modal.showStories = true
     }
   },
   data () {
     return {
-      show: true
+      showStories: true
     }
   }
 }

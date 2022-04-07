@@ -1,6 +1,6 @@
 <template>
 <!-- <teleport to='#portal' v-if="show"> -->
-  <div v-if="show" class="popup-container" @click.self="closeModal">
+  <div v-if="showStories" class="popup-container" @click.self="closeModal">
     <div class="c-topline">
       <div class="g-container">
         <div class="popup-topline">
@@ -27,13 +27,12 @@ export default {
   },
   data () {
     return {
-      show: false
+      showStories: false
     }
   },
   methods: {
     closeModal () {
-      // eslint-disable-next-line vue/no-mutating-props
-      this.show = false
+      this.showStories = false
     }
   }
 }
