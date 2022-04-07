@@ -5,7 +5,8 @@
     </div>
     <div class="username">{{ username }}</div>
   </button>
-  <slider-user-story ref="modal" :show='show'></slider-user-story>
+  <!-- импортируем компонент модалки -->
+  <slider-user-story ref="modal" :showStories='showStories' @close='closeModal()'></slider-user-story>
 </template>
 <script>
 import { SliderUserStory } from '../../components/sliderUserStory/'
@@ -26,14 +27,19 @@ export default {
       requaired: true
     }
   },
+  // обрабатываем события по клику
   methods: {
-    showModal: function () {
-      this.$refs.modal.showStories = true
+    showModal () {
+      this.showStories = true
+    },
+    closeModal (close) {
+      this.showStories = close
     }
   },
+  // data - задаем значение по умолчанию при загрузке страницы - сториз скрыты
   data () {
     return {
-      showStories: true
+      showStories: false
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
-<!-- <teleport to='#portal' v-if="show"> -->
-  <div v-if="showStories" class="popup-container" @click.self="closeModal">
+<!-- условие переносим на телепорт -->
+<teleport to='#portal' v-if="showStories">
+  <div class="popup-container" @click.self="closeModal">
     <div class="c-topline">
       <div class="g-container">
         <div class="popup-topline">
@@ -14,7 +15,7 @@
       </div>
     </div>
   </div>
-<!-- </teleport> -->
+</teleport>
 </template>
 
 <script>
@@ -30,9 +31,18 @@ export default {
       showStories: false
     }
   },
+  // ловим пользовательское событие из дочернего компонента
   methods: {
     closeModal () {
-      this.showStories = false
+      this.$emit('close', false)
+    }
+  },
+  // передаем данные из другого компонента
+  props: {
+    // eslint-disable-next-line vue/no-dupe-keys
+    showStories: {
+      type: Boolean,
+      default: false
     }
   }
 }
