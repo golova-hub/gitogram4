@@ -45,10 +45,16 @@ export default {
   },
   data () {
     return {
-      childToggler: false,
-      postAvatar: 'https://picsum.photos/300/300',
-      postUsername: 'joshua_l'
+      childToggler: false
+      // postAvatar: 'https://picsum.photos/300/300'
+      // postUsername: 'joshua_l'
     }
+  },
+  // props передаем данные из массив с гитхаба, коментим старые данные в data
+  props: {
+    postUsername: String,
+    postAvatar: String,
+    postDescription: String
   }
 }
 </script>

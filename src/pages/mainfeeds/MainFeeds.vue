@@ -29,15 +29,23 @@
   </div>
   <div class="g-container">
     <div class="post-item">
-      <post-item :postAvatar="postAvatar"
-            :postUsername="postUsername">
-        <template #taskcard>
-          <div class="taskcard-title">Vue.js</div>
-          <p class="taskcard-tasktext"><b>JavaScript</b> framework for building interactive web applications ⚡</p>
-          <post-item-btns></post-item-btns>
-        </template>
-      </post-item>
+      <!-- формируем цикл v-for с ключом по id -->
+      <div class="post-item" v-for="item in items" :key="item.id">
+         <!-- внутрь компонента передаем данные, отделяем данные :postAvatar="item.owner.avatar_url" и параметры (передаем отдельно) -->
+        <post-item v-bind="getPostsData(item)">
+          <template #taskcard>
+            <div class="taskcard-title">Vue.js</div>
+            <p class="taskcard-tasktext">{{item.description}}</p>
+            <post-item-btns></post-item-btns>
+          </template>
+        </post-item>
+      </div>
     </div>
+    <!-- так можно распечатать массив запроса -->
+    <!-- <div>
+      <pre>{{items}}</pre>
+    </div> -->
+    <!-- так можно распечатать массив запроса - end -->
   </div>
 </template>
 
@@ -49,6 +57,7 @@ import { ProfilePhoto } from '../../components/profilePhoto/'
 import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
 import stories from './data.json'
+import * as api from '../../api'
 
 export default {
   name: 'MainFeeds',
@@ -62,13 +71,36 @@ export default {
   },
   data () {
     return {
-      stories
+      stories,
+      // массив, куда сложим данные, полученный через api с github
+      items: []
     }
   },
   methods: {
     showModal: function () {
       this.$refs.modal.show = true
+    },
+    // вынесем данные из шаблона, чтобы удобнее структурировать, убираем кавычки
+    getPostsData (item) {
+      return {
+        postAvatar: item.owner.avatar_url,
+        postUsername: item.name,
+        postDescription: item.description
+      }
     }
+  },
+  // запускаем функцию, эмулирующую запрос, внутри нашего компонента, при создании компонента
+  // добавляем async функцию, оборачиваем запрос в try catch и ловим данные
+  async created () {
+    try {
+      const { data } = await api.trendings.getTrendings()
+      this.items = data.items
+    } catch (error) {
+      // ошибку можно вывести в оповещение для пользователя
+      console.log(error)
+    }
+    // вызываем метод api.trendings.getTrendings()
+    // api.trendings.getTrendings()
   }
 }
 </script>
