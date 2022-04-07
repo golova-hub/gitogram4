@@ -48,7 +48,6 @@ import { StoryUserItem } from '../../components/storyUserItem/'
 import { ProfilePhoto } from '../../components/profilePhoto/'
 import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
-// import { SliderUserStory } from '../../components/sliderUserStory/'
 import stories from './data.json'
 
 export default {
