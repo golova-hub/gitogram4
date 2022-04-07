@@ -1,0 +1,25 @@
+.popup-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  position: absolute;
+  z-index: 10;
+  .popup-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 48px;
+  }
+  .icon-logo {
+    color: white;
+    width: 174px;
+    max-width: 174px;
+    min-width: 174px;
+  }
+  .icon-close {
+    color: white;
+    width: 23px;
+    max-width: 23px;
+    min-width: 23px;
+  }
+}
