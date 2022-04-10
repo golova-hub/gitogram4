@@ -31,6 +31,7 @@ export default {
   methods: {
     showModal () {
       this.showStories = true
+      this.$store.dispatch('fetchUser')
     },
     closeModal (close) {
       this.showStories = close

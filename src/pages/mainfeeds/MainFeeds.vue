@@ -20,7 +20,8 @@
           <li class="stories-item" v-for="story in stories" :key="story.id">
             <story-user-item
             :avatar="story.avatar"
-            :username="story.username">
+            :username="story.username"
+            >
             </story-user-item>
           </li>
         </ul>
@@ -28,6 +29,7 @@
     </top-line>
   </div>
   <div class="g-container">
+    <!-- <button @click="trigger">click</button> -->
     <div class="post-item">
       <!-- формируем цикл v-for с ключом по id -->
       <div class="post-item" v-for="item in items" :key="item.id">
@@ -57,7 +59,8 @@ import { ProfilePhoto } from '../../components/profilePhoto/'
 import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
 import stories from './data.json'
-import * as api from '../../api'
+// import * as api from '../../api'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'MainFeeds',
@@ -77,6 +80,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions({}),
     showModal: function () {
       this.$refs.modal.show = true
     },
@@ -87,12 +91,15 @@ export default {
         postUsername: item.name,
         postDescription: item.description
       }
+    },
+    trigger () {
+      // 1 вызовим метод
+      this.$store.dispatch('fetchUser')
+    },
+    created () {
+      this.$store.dispatch('created')
     }
-    // statestate () {
-    //   this.$store.commit('statestate')
-    //   console.log(this.$store.state.foo)
-    // }
-  },
+  }
   // подключаем store
   // created () {
   //   console.log(
@@ -102,19 +109,21 @@ export default {
   // запускаем функцию, эмулирующую запрос, внутри нашего компонента, при создании компонента
   // добавляем async функцию, оборачиваем запрос в try catch и ловим данные
   // eslint-disable-next-line no-dupe-keys
-  async created () {
-    // провверяем вывод из стора
-    // console.log(this.$store.state.foo)
-    try {
-      const { data } = await api.trendings.getTrendings()
-      this.items = data.items
-    } catch (error) {
-      // ошибку можно вывести в оповещение для пользователя
-      console.log(error)
-    }
-    // вызываем метод api.trendings.getTrendings()
-    // api.trendings.getTrendings()
-  }
+  // /
+  // переношу в экшенс в сторе
+  // async created () {
+  //   // провверяем вывод из стора
+  //   // console.log(this.$store.state.foo)
+  //   try {
+  //     const { data } = await api.trendings.getTrendings()
+  //     this.items = data.items
+  //   } catch (error) {
+  //     // ошибку можно вывести в оповещение для пользователя
+  //     console.log(error)
+  //   }
+  //   // вызываем метод api.trendings.getTrendings()
+  //   // api.trendings.getTrendings()
+  // }
 }
 </script>
 <style scoped lang="scss" src="./MainFeeds.scss"></style>
