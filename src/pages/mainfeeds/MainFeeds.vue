@@ -87,11 +87,11 @@ export default {
         postUsername: item.name,
         postDescription: item.description
       }
-    },
-    statestate () {
-      this.$store.commit('statestate')
-      console.log(this.$store.state.foo)
     }
+    // statestate () {
+    //   this.$store.commit('statestate')
+    //   console.log(this.$store.state.foo)
+    // }
   },
   // подключаем store
   // created () {
@@ -103,6 +103,8 @@ export default {
   // добавляем async функцию, оборачиваем запрос в try catch и ловим данные
   // eslint-disable-next-line no-dupe-keys
   async created () {
+    // провверяем вывод из стора
+    // console.log(this.$store.state.foo)
     try {
       const { data } = await api.trendings.getTrendings()
       this.items = data.items

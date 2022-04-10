@@ -2,6 +2,7 @@
 <!-- условие переносим на телепорт -->
 <teleport to='#portal' v-if="showStories">
   <div class="popup-container" @click.self="closeModal">
+    <!-- шапка -->
     <div class="c-topline">
       <div class="g-container">
         <div class="popup-topline">
@@ -14,17 +15,21 @@
         </div>
       </div>
     </div>
+    <!-- слайды -->
+    <slider-item></slider-item>
   </div>
 </teleport>
 </template>
 
 <script>
 import { IconComp } from '../../icons/'
+import SliderItem from '../sliderItem/SliderItem.vue'
 
 export default {
   name: 'MainFeeds',
   components: {
-    IconComp
+    IconComp,
+    SliderItem
   },
   data () {
     return {

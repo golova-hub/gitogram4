@@ -1,7 +1,7 @@
 <template>
   <div class="slider-item">
     <div class="slide-head">
-      <progress-bar></progress-bar>
+      <progress-bar active></progress-bar>
       <div class="slide-container">
         <post-user-profile :postAvatar="postAvatar"
             :postUsername="postUsername"></post-user-profile>
@@ -50,6 +50,15 @@ export default {
       postAvatar: 'https://picsum.photos/300/300',
       postUsername: 'joshua_l',
       sliderBtnText: 'Follow'
+    }
+  },
+  props: {
+    active: Boolean,
+    loading: Boolean,
+    data: {
+      type: Object,
+      requared: true,
+      default: () => ({})
     }
   }
 }
