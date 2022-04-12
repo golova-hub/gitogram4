@@ -29,10 +29,11 @@
     </top-line>
   </div>
   <div class="g-container">
+    <pre>{{$store.state.items}}</pre>
     <!-- <button @click="trigger">click</button> -->
     <div class="post-item">
       <!-- формируем цикл v-for с ключом по id -->
-      <div class="post-item" v-for="item in items" :key="item.id">
+      <div class="post-item" v-for="items in this.$store.state.items" :key="items.id">
          <!-- внутрь компонента передаем данные, отделяем данные :postAvatar="item.owner.avatar_url" и параметры (передаем отдельно) -->
         <post-item v-bind="getPostsData(item)">
           <template #taskcard>
@@ -75,12 +76,14 @@ export default {
   data () {
     return {
       stories,
-      // массив, куда сложим данные, полученный через api с github
+      // // массив, куда сложим данные, полученный через api с github
       items: []
     }
   },
   methods: {
-    ...mapActions({}),
+    ...mapActions([
+      ''
+    ]),
     showModal: function () {
       this.$refs.modal.show = true
     },
@@ -91,14 +94,15 @@ export default {
         postUsername: item.name,
         postDescription: item.description
       }
-    },
-    trigger () {
-      // 1 вызовим метод
-      this.$store.dispatch('fetchUser')
-    },
-    created () {
-      this.$store.dispatch('created')
     }
+    // trigger () {
+    //   // 1 вызовим метод
+    //   this.$store.dispatch('fetchUser')
+    // }
+  },
+  // чтобы работал из стора. это не метод, а хук - dispatch выводить вне методов! запрос смотрим в network
+  created () {
+    this.$store.dispatch('GET_USER_DATA')
   }
   // подключаем store
   // created () {

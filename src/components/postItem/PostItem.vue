@@ -1,5 +1,6 @@
 <template>
   <div class="post-item-content">
+    <!-- <pre>{{ trendings }}</pre> -->
     <div class="post-user-profile">
         <post-user-profile :postAvatar="postAvatar"
             :postUsername="postUsername">
@@ -31,6 +32,7 @@
 
 import { PostUserProfile } from '../../components/postUserProfile/'
 import { PostCommentToggler } from '../../components/postCommentToggler/'
+// import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'PostItem',
@@ -38,7 +40,15 @@ export default {
     PostUserProfile,
     PostCommentToggler
   },
+  // computed: {
+  //   ...mapState({
+  //     trendings: state => state.trendings.data
+  //   })
+  // },
   methods: {
+    // ...mapActions({
+    //   getTrendings: 'trendings/getTrendings'
+    // }),
     handler (toggler) {
       this.childToggler = toggler
     }
@@ -56,6 +66,9 @@ export default {
     postAvatar: String,
     postDescription: String
   }
+  // async created () {
+  //   await this.getTrendings()
+  // }
 }
 </script>
 <style lang="scss" scoped src="./PostItem.scss"></style>

@@ -30,11 +30,13 @@ export default {
   // обрабатываем события по клику
   methods: {
     showModal () {
+      // this.$store.dispatch('showModal')
       this.showStories = true
-      this.$store.dispatch('fetchUser')
+      // this.$store.dispatch('fetchUser')
     },
     closeModal (close) {
       this.showStories = close
+      // this.$store.dispatch('closeModal')
     }
   },
   // data - задаем значение по умолчанию при загрузке страницы - сториз скрыты
