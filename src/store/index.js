@@ -4,12 +4,11 @@ import * as api from '../api'
 export default createStore({
   state: {
     // положить данные из запроса в массив
-    items: {}
+    items: []
   },
   getters: {
     // получим данные в компонент
     ITEMS (state) {
-      console.log(state)
       return state.items
     }
   },
@@ -38,6 +37,7 @@ export default createStore({
       } catch (error) {
         console.log(error)
       }
+      // api.trendings.getTrendings()
       return this.items
     }
   }

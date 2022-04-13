@@ -1,9 +1,7 @@
 <template>
   <div class="post-item-content">
-    <!-- <pre>{{ trendings }}</pre> -->
     <div class="post-user-profile">
-        <post-user-profile :postAvatar="postAvatar"
-            :postUsername="postUsername">
+        <post-user-profile :postUsername="postUsername">
         </post-user-profile>
     </div>
     <div class="taskcard">
@@ -32,7 +30,7 @@
 
 import { PostUserProfile } from '../../components/postUserProfile/'
 import { PostCommentToggler } from '../../components/postCommentToggler/'
-// import { mapState, mapActions } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default {
   name: 'PostItem',
@@ -42,12 +40,12 @@ export default {
   },
   // computed: {
   //   ...mapState({
-  //     trendings: state => state.trendings.data
+  //     trendings: state => state.items
   //   })
   // },
   methods: {
     // ...mapActions({
-    //   getTrendings: 'trendings/getTrendings'
+    //   // getTrendings: 'trendings/getTrendings'
     // }),
     handler (toggler) {
       this.childToggler = toggler
@@ -62,9 +60,9 @@ export default {
   },
   // props передаем данные из массив с гитхаба, коментим старые данные в data
   props: {
-    postUsername: String,
-    postAvatar: String,
-    postDescription: String
+    postUsername: String
+    // postAvatar: String,
+    // postDescription: String
   }
   // async created () {
   //   await this.getTrendings()

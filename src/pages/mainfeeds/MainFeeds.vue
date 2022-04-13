@@ -33,12 +33,15 @@
     <!-- <button @click="trigger">click</button> -->
     <div class="post-item">
       <!-- формируем цикл v-for с ключом по id -->
-      <div class="post-item" v-for="item in this.$store.state.items" :key="item.id">
+      <div class="post-item" v-for="item in $store.state.items" :key="item.id">
+        <!-- <h1>{{$store.state.items.name}}</h1> -->
          <!-- внутрь компонента передаем данные, отделяем данные :postAvatar="item.owner.avatar_url" и параметры (передаем отдельно) -->
-        <post-item v-bind="getPostsData(items)">
+        <!-- <post-item v-bind="getPostsData(items)"> -->
+        <post-item :postUsername="items.name">
           <template #taskcard>
+            <h1>тут имя - {{$store.state.items.name}}</h1>
             <div class="taskcard-title">Vue.js</div>
-            <p class="taskcard-tasktext">{{items.description}}</p>
+            <p class="taskcard-tasktext"></p>
             <post-item-btns></post-item-btns>
           </template>
         </post-item>
@@ -61,7 +64,7 @@ import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
 import stories from './data.json'
 // import * as api from '../../api'
-// import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
   name: 'MainFeeds',
@@ -80,18 +83,24 @@ export default {
       items: []
     }
   },
+  computed: {
+    ...mapState({
+      trendings: state => state.items
+    })
+  },
   methods: {
     showModal: function () {
       this.$refs.modal.show = true
-    },
-    // вынесем данные из шаблона, чтобы удобнее структурировать, убираем кавычки
-    getPostsData (items) {
-      return {
-        postAvatar: items.avatar_url,
-        postUsername: items.name,
-        postDescription: items.description
-      }
     }
+    // вынесем данные из шаблона, чтобы удобнее структурировать, убираем кавычки
+    // getPostsData (items) {
+    //   return {
+    //     postId: items.id,
+    //     postAvatar: items.owner?.avatar_url,
+    //     postUsername: items.name,
+    //     postDescription: items.description
+    //   }
+    // }
     // trigger () {
     //   // 1 вызовим метод
     //   this.$store.dispatch('fetchUser')
