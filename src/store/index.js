@@ -4,11 +4,12 @@ import * as api from '../api'
 export default createStore({
   state: {
     // положить данные из запроса в массив
-    items: []
+    items: {}
   },
   getters: {
     // получим данные в компонент
-    USERS (state) {
+    ITEMS (state) {
+      console.log(state)
       return state.items
     }
   },
@@ -29,17 +30,14 @@ export default createStore({
     //   }
     // },
     async GET_USER_DATA ({ commit }) {
-      console.log(api)
       try {
-        const { data } = await api.trendings.getTrendings()
-        this.items = data.items
+        const items = await api.trendings.getTrendings()
+        this.items = items
+        // когда запрос выполнится, надо выполнить мутацию
+        commit('SET_USER_DATA', items)
       } catch (error) {
         console.log(error)
       }
-      // вызываем метод api.trendings.getTrendings()
-      api.trendings.getTrendings()
-      // когда запрос выполнится, надо выполнить мутацию
-      commit('SET_USER_DATA', this.items)
       return this.items
     }
   }

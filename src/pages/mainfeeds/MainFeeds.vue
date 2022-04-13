@@ -33,12 +33,12 @@
     <!-- <button @click="trigger">click</button> -->
     <div class="post-item">
       <!-- формируем цикл v-for с ключом по id -->
-      <div class="post-item" v-for="items in this.$store.state.items" :key="items.id">
+      <div class="post-item" v-for="item in this.$store.state.items" :key="item.id">
          <!-- внутрь компонента передаем данные, отделяем данные :postAvatar="item.owner.avatar_url" и параметры (передаем отдельно) -->
-        <post-item v-bind="getPostsData(item)">
+        <post-item v-bind="getPostsData(items)">
           <template #taskcard>
             <div class="taskcard-title">Vue.js</div>
-            <p class="taskcard-tasktext">{{item.description}}</p>
+            <p class="taskcard-tasktext">{{items.description}}</p>
             <post-item-btns></post-item-btns>
           </template>
         </post-item>
@@ -61,7 +61,7 @@ import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
 import stories from './data.json'
 // import * as api from '../../api'
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 
 export default {
   name: 'MainFeeds',
@@ -81,18 +81,15 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      ''
-    ]),
     showModal: function () {
       this.$refs.modal.show = true
     },
     // вынесем данные из шаблона, чтобы удобнее структурировать, убираем кавычки
-    getPostsData (item) {
+    getPostsData (items) {
       return {
-        postAvatar: item.owner.avatar_url,
-        postUsername: item.name,
-        postDescription: item.description
+        postAvatar: items.avatar_url,
+        postUsername: items.name,
+        postDescription: items.description
       }
     }
     // trigger () {
@@ -103,13 +100,8 @@ export default {
   // чтобы работал из стора. это не метод, а хук - dispatch выводить вне методов! запрос смотрим в network
   created () {
     this.$store.dispatch('GET_USER_DATA')
+    // console.log(this.$store.state.items)
   }
-  // подключаем store
-  // created () {
-  //   console.log(
-  //     this.$store.state.foo
-  //   )
-  // },
   // запускаем функцию, эмулирующую запрос, внутри нашего компонента, при создании компонента
   // добавляем async функцию, оборачиваем запрос в try catch и ловим данные
   // eslint-disable-next-line no-dupe-keys
