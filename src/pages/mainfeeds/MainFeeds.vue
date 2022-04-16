@@ -29,29 +29,22 @@
     </top-line>
   </div>
   <div class="g-container">
-    <pre>{{$store.state.items}}</pre>
-    <!-- <button @click="trigger">click</button> -->
+    <!-- <button @click="trigger">click</button>-->
+     <!-- <pre>{{$store.state.items}}</pre> -->
     <div class="post-item">
       <!-- формируем цикл v-for с ключом по id -->
-      <div class="post-item" v-for="item in $store.state.items" :key="item.id">
-        <!-- <h1>{{$store.state.items.name}}</h1> -->
+      <div class="post-item" v-for="item in $store.state.items.items" :key="item.id">
          <!-- внутрь компонента передаем данные, отделяем данные :postAvatar="item.owner.avatar_url" и параметры (передаем отдельно) -->
-        <!-- <post-item v-bind="getPostsData(items)"> -->
-        <post-item :postUsername="items.name">
+        <post-item v-bind="getPostsData(item)">
+        <!-- <post-item> -->
           <template #taskcard>
-            <h1>тут имя - {{$store.state.items.name}}</h1>
             <div class="taskcard-title">Vue.js</div>
-            <p class="taskcard-tasktext"></p>
+            <p class="taskcard-tasktext">{{item.description}}</p>
             <post-item-btns></post-item-btns>
           </template>
         </post-item>
       </div>
     </div>
-    <!-- так можно распечатать массив запроса -->
-    <!-- <div>
-      <pre>{{items}}</pre>
-    </div> -->
-    <!-- так можно распечатать массив запроса - end -->
   </div>
 </template>
 
@@ -63,8 +56,7 @@ import { ProfilePhoto } from '../../components/profilePhoto/'
 import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
 import stories from './data.json'
-// import * as api from '../../api'
-import { mapState } from 'vuex'
+// import { mapState } from 'vuex'
 
 export default {
   name: 'MainFeeds',
@@ -78,57 +70,24 @@ export default {
   },
   data () {
     return {
-      stories,
-      // // массив, куда сложим данные, полученный через api с github
-      items: []
+      stories
     }
-  },
-  computed: {
-    ...mapState({
-      trendings: state => state.items
-    })
   },
   methods: {
-    showModal: function () {
-      this.$refs.modal.show = true
-    }
     // вынесем данные из шаблона, чтобы удобнее структурировать, убираем кавычки
-    // getPostsData (items) {
-    //   return {
-    //     postId: items.id,
-    //     postAvatar: items.owner?.avatar_url,
-    //     postUsername: items.name,
-    //     postDescription: items.description
-    //   }
-    // }
-    // trigger () {
-    //   // 1 вызовим метод
-    //   this.$store.dispatch('fetchUser')
-    // }
+    getPostsData (item) {
+      return {
+        postId: item.id,
+        postAvatar: item.owner.avatar_url,
+        postUsername: item.name,
+        postDescription: item.description
+      }
+    }
   },
   // чтобы работал из стора. это не метод, а хук - dispatch выводить вне методов! запрос смотрим в network
   created () {
-    this.$store.dispatch('GET_USER_DATA')
-    // console.log(this.$store.state.items)
+    this.$store.dispatch('items/GET_USER_DATA')
   }
-  // запускаем функцию, эмулирующую запрос, внутри нашего компонента, при создании компонента
-  // добавляем async функцию, оборачиваем запрос в try catch и ловим данные
-  // eslint-disable-next-line no-dupe-keys
-  // /
-  // переношу в экшенс в сторе
-  // async created () {
-  //   // провверяем вывод из стора
-  //   // console.log(this.$store.state.foo)
-  //   try {
-  //     const { data } = await api.trendings.getTrendings()
-  //     this.items = data.items
-  //   } catch (error) {
-  //     // ошибку можно вывести в оповещение для пользователя
-  //     console.log(error)
-  //   }
-  //   // вызываем метод api.trendings.getTrendings()
-  //   // api.trendings.getTrendings()
-  // }
 }
 </script>
 <style scoped lang="scss" src="./MainFeeds.scss"></style>

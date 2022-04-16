@@ -1,7 +1,7 @@
 <template>
   <button class="g-btn theme-green">
   <span class="btn-text " @click="confirm">
-    {{ text }}
+    Follow
   </span>
   </button>
 </template>
@@ -11,12 +11,6 @@
 export default {
   name: 'BtnMain',
   emits: ['onConfirm'],
-  props: {
-    text: {
-      type: String,
-      required: true
-    }
-  },
   methods: {
     confirm () {
       this.$emit('onConfirm')

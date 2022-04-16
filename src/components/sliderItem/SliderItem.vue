@@ -1,10 +1,10 @@
 <template>
-  <div class="slider-item">
+  <div class="slider-item" :class="{ active }">
     <div class="slide-head">
-      <progress-bar active></progress-bar>
+      <progress-bar :active="active"></progress-bar>
       <div class="slide-container">
-        <post-user-profile :postAvatar="postAvatar"
-            :postUsername="postUsername"></post-user-profile>
+        <post-user-profile :postAvatar="data.postAvatar"
+            :postUsername="data.postUsername"></post-user-profile>
       </div>
     </div>
     <div class="slide-body">
@@ -13,21 +13,14 @@
           <div class="slider-body-img">
             <img src="https://picsum.photos/300/300" alt="Картинка" />
           </div>
-          <div class="slider-text">
-            <p><b>The easiest</b> way to get .NET 6 Preview 4 is to install the maui-check dotnet tool from CLI and follow the instructions.</p>
-            <p>For running on Mac you'll currently use your favorite text editor and terminal to edit and run apps. We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.</p>
-            <p>In Preview 4 we enable push/pop navigation with NavigationPage. We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms</p>
-            <p>For running on Mac you'll currently use your favorite text editor and terminal to edit and run apps. We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.</p>
-            <p>For running on Mac you'll currently use your favorite text editor and terminal to edit and run apps. We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.</p>
-            <p>In Preview 4 we enable push/pop navigation with NavigationPage. We added a concrete implementation of IWindow, and completed porting ContentPage from Xamarin.Forms</p>
-            <p>For running on Mac you'll currently use your favorite text editor and terminal to edit and run apps. We expect Visual Studio for Mac .NET 6 support to begin arriving mid-year.</p>
+          <div class="slider-text" v-if="data.content?.length" >
           </div>
         </div>
       </div>
     </div>
     <div class="slide-footer">
       <div class="slide-container">
-        <btn-main :text="sliderBtnText"></btn-main>
+        <btn-main>Follow</btn-main>
       </div>
     </div>
   </div>
@@ -45,13 +38,13 @@ export default {
     PostUserProfile,
     BtnMain
   },
-  data () {
-    return {
-      postAvatar: 'https://picsum.photos/300/300',
-      postUsername: 'joshua_l',
-      sliderBtnText: 'Follow'
-    }
-  },
+  // data () {
+  //   return {
+  //     postAvatar: 'https://picsum.photos/300/300',
+  //     postUsername: 'joshua_l',
+  //     sliderBtnText: 'Follow'
+  //   }
+  // },
   props: {
     active: Boolean,
     loading: Boolean,

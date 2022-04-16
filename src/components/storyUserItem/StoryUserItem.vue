@@ -17,6 +17,12 @@ export default {
   components: {
     SliderUserStory
   },
+  // data - задаем значение по умолчанию при загрузке страницы - сториз скрыты
+  data () {
+    return {
+      showStories: false
+    }
+  },
   props: {
     avatar: {
       type: String,
@@ -37,12 +43,6 @@ export default {
     closeModal (close) {
       this.showStories = close
       // this.$store.dispatch('closeModal')
-    }
-  },
-  // data - задаем значение по умолчанию при загрузке страницы - сториз скрыты
-  data () {
-    return {
-      showStories: false
     }
   }
 }

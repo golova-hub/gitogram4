@@ -1,7 +1,7 @@
 <template>
   <div class="post-item-content">
     <div class="post-user-profile">
-        <post-user-profile :postUsername="postUsername">
+        <post-user-profile :postUsername="postUsername" :postAvatar="postAvatar">
         </post-user-profile>
     </div>
     <div class="taskcard">
@@ -60,8 +60,8 @@ export default {
   },
   // props передаем данные из массив с гитхаба, коментим старые данные в data
   props: {
-    postUsername: String
-    // postAvatar: String,
+    postUsername: String,
+    postAvatar: String
     // postDescription: String
   }
   // async created () {
