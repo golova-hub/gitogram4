@@ -1,15 +1,16 @@
 <template>
-  <main-feeds />
+  <router-view />
+  <!-- <main-feeds /> -->
 </template>
 
 <script>
-import MainFeeds from './pages/mainfeeds/MainFeeds.vue'
+// import MainFeeds from './pages/mainfeeds/MainFeeds.vue'
 
 export default {
-  name: 'App',
-  components: {
-    MainFeeds
-  }
+  name: 'App'
+  // components: {
+  //   MainFeeds
+  // }
 }
 </script>
 

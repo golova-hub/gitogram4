@@ -1,27 +1,22 @@
 <template>
+<!-- переход по клику в методе, роутер -->
   <button @click="showModal" class="stories-avatar-btn">
     <div class="avatar">
       <img :src="avatar" class="img" alt="User avatar" />
     </div>
     <div class="username">{{ username }}</div>
   </button>
-  <!-- импортируем компонент модалки -->
-  <slider-user-story ref="modal" :showStories='showStories' @close='closeModal()'></slider-user-story>
+  <!-- импортируем компонент модалки, убираем если используем роутер -->
+  <!-- <slider-user-story ref="modal" :showStories='showStories' @close='closeModal()'></slider-user-story> -->
 </template>
 <script>
-import { SliderUserStory } from '../../components/sliderUserStory/'
+// import { SliderUserStory } from '../../components/sliderUserStory/'
 
 export default {
   name: 'StoryUserItem',
   template: 'StoryUserItem',
   components: {
-    SliderUserStory
-  },
-  // data - задаем значение по умолчанию при загрузке страницы - сториз скрыты
-  data () {
-    return {
-      showStories: false
-    }
+    // SliderUserStory
   },
   props: {
     avatar: {
@@ -33,16 +28,9 @@ export default {
       requaired: true
     }
   },
-  // обрабатываем события по клику
   methods: {
     showModal () {
-      // this.$store.dispatch('showModal')
-      this.showStories = true
-      // this.$store.dispatch('fetchUser')
-    },
-    closeModal (close) {
-      this.showStories = close
-      // this.$store.dispatch('closeModal')
+      this.$router.push('/slider')
     }
   }
 }

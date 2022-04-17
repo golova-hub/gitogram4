@@ -29,6 +29,7 @@
     </top-line>
   </div>
   <div class="g-container">
+    <!-- <router-link to="/slider">link</router-link> -->
     <!-- <button @click="trigger">click</button>-->
      <!-- <pre>{{$store.state.items}}</pre> -->
     <div class="post-item">
