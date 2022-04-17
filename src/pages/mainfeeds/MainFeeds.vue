@@ -17,10 +17,9 @@
       </template>
       <template #content>
         <ul class="stories">
-          <li class="stories-item" v-for="story in stories" :key="story.id">
+          <li class="stories-item" v-for="item in $store.state.items.items" :key="item.id">
             <story-user-item
-            :avatar="story.avatar"
-            :username="story.username"
+            v-bind="getPostsData(item)"
             >
             </story-user-item>
           </li>
@@ -56,7 +55,7 @@ import { StoryUserItem } from '../../components/storyUserItem/'
 import { ProfilePhoto } from '../../components/profilePhoto/'
 import { PostItem } from '../../components/postItem/'
 import { PostItemBtns } from '../../components/postItemBtns/'
-import stories from './data.json'
+// import stories from './data.json'
 // import { mapState } from 'vuex'
 
 export default {
@@ -69,11 +68,11 @@ export default {
     PostItem,
     PostItemBtns
   },
-  data () {
-    return {
-      stories
-    }
-  },
+  // data () {
+  //   return {
+  //     stories
+  //   }
+  // },
   methods: {
     // вынесем данные из шаблона, чтобы удобнее структурировать, убираем кавычки
     getPostsData (item) {
@@ -81,7 +80,8 @@ export default {
         postId: item.id,
         postAvatar: item.owner.avatar_url,
         postUsername: item.name,
-        postDescription: item.description
+        postDescription: item.description,
+        postLogin: item.owner.login
       }
     }
   },

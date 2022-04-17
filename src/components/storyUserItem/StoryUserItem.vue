@@ -2,9 +2,9 @@
 <!-- переход по клику в методе, роутер -->
   <button @click="showModal" class="stories-avatar-btn">
     <div class="avatar">
-      <img :src="avatar" class="img" alt="User avatar" />
+      <img :src="postAvatar" class="img" alt="User avatar" />
     </div>
-    <div class="username">{{ username }}</div>
+    <div class="username">{{ postLogin }}</div>
   </button>
   <!-- импортируем компонент модалки, убираем если используем роутер -->
   <!-- <slider-user-story ref="modal" :showStories='showStories' @close='closeModal()'></slider-user-story> -->
@@ -19,11 +19,11 @@ export default {
     // SliderUserStory
   },
   props: {
-    avatar: {
+    postAvatar: {
       type: String,
       requaired: true
     },
-    username: {
+    postLogin: {
       type: String,
       requaired: true
     }
@@ -31,6 +31,17 @@ export default {
   methods: {
     showModal () {
       this.$router.push('/slider')
+    },
+    // getPostsData (item) {
+    //   return {
+    //     // postId: item.id,
+    //     avatar: item.owner.avatar_url
+    //     // postUsername: item.name,
+    //     // postDescription: item.description
+    //   }
+    // },
+    created () {
+      this.$store.dispatch('items/GET_USER_DATA')
     }
   }
 }
