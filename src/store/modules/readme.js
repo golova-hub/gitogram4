@@ -4,8 +4,7 @@ import { getRepoReadme } from '../../api/rest/readmeRepo'
 export default {
   namespaced: true,
   state: {
-    repos: [],
-    users: []
+    repos: []
   },
   getters: {
     getRepositoryByIndex: (state) => (index) => {
@@ -13,16 +12,16 @@ export default {
     }
   },
   mutations: {
-    SET_REPOS (state, payload) {
-      state.isLoaded = payload
+    SET_REPOS (state, repos) {
+      state.repos = repos
     }
   },
   actions: {
     // Заполнение списка репозиториев
-    async fetchRepositories (store, payload) {
-      const repos = (await getRepoReadme(payload)).data.items
+    async fetchRepositories ({ commit }) {
+      const repos = (await getRepoReadme()).data
       console.log(repos)
-      store.commit('SET_REPOS', true)
+      commit('SET_REPOS', repos)
     }
   }
 }

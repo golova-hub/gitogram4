@@ -17,7 +17,7 @@
     </div>
     <!-- слайды -->
     <button @click="trigger">click</button>
-     <pre>{{$store.state.readme.items}}</pre>
+     <pre>{{$store.state.readme.repos}}</pre>
     <slider-item active></slider-item>
   </div>
 </teleport>
@@ -26,9 +26,9 @@
 <script>
 import { IconComp } from '../../icons/'
 import SliderItem from '../sliderItem/SliderItem.vue'
-// import { createNamespacedHelpers } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
 // import { getRepoReadme } from '../../api/rest/readmeRepo'
-// const { mapState } = createNamespacedHelpers('readme')
+const { mapState } = createNamespacedHelpers('readme')
 
 export default {
   name: 'MainFeeds',
@@ -50,36 +50,15 @@ export default {
       default: false
     }
   },
-  // computed: {
-  //   ...mapState({
-  //     users: (state) => state.users
-  //   })
-  // },
+  computed: {
+    ...mapState({
+      repos: (state) => state.readme
+    })
+  },
   // ловим пользовательское событие из дочернего компонента
   methods: {
     closeModal () {
       this.$emit('close', false)
-    },
-    async getReadmeText (owner, repo) {
-      this.loading = true
-      const payload = {
-        headers: {
-          accept: 'application/vnd.github.v3.html'
-        }
-      }
-      let data
-      try {
-        // eslint-disable-next-line no-undef
-        data = (await getRepoReadme(owner, repo, payload)).data
-      } catch (e) {
-        console.log(e)
-        throw e
-      } finally {
-        setTimeout(() => {
-          this.loading = false
-          this.readmeText = data
-        }, 300)
-      }
     },
     trigger () {
       this.$store.dispatch('readme/fetchRepositories')
