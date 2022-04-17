@@ -1,11 +1,20 @@
 .slider-item {
   background: #FFFFFF;
   border-radius: 8px;
-  width: 375px;
-  height: 667px;
+  width: 302px;
+  height: 530px;
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  &.active {
+    background: #FFFFFF;
+    border-radius: 8px;
+    width: 376px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+  }
   .slide-head {
     padding: 8px 8px 0px;
     border-bottom: 1px solid #CACACA;

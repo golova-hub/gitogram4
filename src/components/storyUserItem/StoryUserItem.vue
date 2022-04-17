@@ -18,6 +18,7 @@ export default {
   components: {
     // SliderUserStory
   },
+  // данные первого запроса дсотупны из родительского компонента, просто передаем пропсы сюда
   props: {
     postAvatar: {
       type: String,
@@ -31,17 +32,6 @@ export default {
   methods: {
     showModal () {
       this.$router.push('/slider')
-    },
-    // getPostsData (item) {
-    //   return {
-    //     // postId: item.id,
-    //     avatar: item.owner.avatar_url
-    //     // postUsername: item.name,
-    //     // postDescription: item.description
-    //   }
-    // },
-    created () {
-      this.$store.dispatch('items/GET_USER_DATA')
     }
   }
 }

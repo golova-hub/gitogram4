@@ -68,6 +68,7 @@ export default {
     PostItem,
     PostItemBtns
   },
+  // из файла json
   // data () {
   //   return {
   //     stories

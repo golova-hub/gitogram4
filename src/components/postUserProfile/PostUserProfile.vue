@@ -3,7 +3,7 @@
   <div class="post-avatar">
     <img :src="postAvatar" class="post-user-avatar" alt="User avatar" />
   </div>
-  <div class="post-username">{{ postUsername }}</div>
+  <div class="post-username">{{ postLogin }}</div>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
       type: String,
       requaired: true
     },
-    postUsername: {
+    postLogin: {
       type: String,
       requaired: true
     }

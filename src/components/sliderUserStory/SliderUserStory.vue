@@ -18,9 +18,17 @@
       </div>
     </div>
     <!-- слайды -->
-    <button @click="trigger">click</button>
-     <pre>{{$store.state.readme.repos.content}}</pre>
-    <slider-item active></slider-item>
+    <!-- <button @click="trigger">click</button> -->
+     <!-- <pre>{{$store.state.readme.repos.content}}</pre> -->
+     <!-- <pre>{{$store.state.items}}</pre> -->
+     <div class="stories-container">
+      <ul class="stories">
+        <li class="stories-item" v-for="item in $store.state.items.items" :key="item.id">
+          <slider-item active
+          v-bind="getPostsData(item)"></slider-item>
+        </li>
+      </ul>
+     </div>
   </div>
 <!-- </teleport> -->
 </template>
@@ -28,8 +36,8 @@
 <script>
 import { IconComp } from '../../icons/'
 import SliderItem from '../sliderItem/SliderItem.vue'
-import { createNamespacedHelpers } from 'vuex'
-const { mapState } = createNamespacedHelpers('readme')
+// import { createNamespacedHelpers } from 'vuex'
+// const { mapState } = createNamespacedHelpers('readme')
 
 export default {
   name: 'SliderUserStory',
@@ -37,16 +45,28 @@ export default {
     IconComp,
     SliderItem
   },
-  computed: {
-    ...mapState({
-      repos: (state) => state.readme
-    })
-  },
+  // computed: {
+  //   ...mapState({
+  //     repos: (state) => state.readme
+  //   })
+  // },
   // ловим пользовательское событие из дочернего компонента
   methods: {
-    trigger () {
-      this.$store.dispatch('readme/fetchRepositories')
+    // trigger () {
+    //   this.$store.dispatch('readme/fetchRepositories')
+    // },
+    getPostsData (item) {
+      return {
+        // postId: item.id,
+        postAvatar: item.owner.avatar_url,
+        postUsername: item.name,
+        postDescription: item.description,
+        postLogin: item.owner.login
+      }
     }
+  },
+  created () {
+    this.$store.dispatch('items/GET_USER_DATA')
   }
 }
 </script>

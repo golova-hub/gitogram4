@@ -26,3 +26,17 @@
     min-width: 23px;
   }
 }
+.stories-container {
+  height: 600px;
+  position: relative;
+}
+.stories {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -188px;
+  transition: .4s;
+}
