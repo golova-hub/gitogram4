@@ -1,4 +1,5 @@
 import * as api from '../../api'
+// import { readmeRepo } from '../../api/rest/readmeRepo'
 
 export default {
   namespaced: true,
@@ -28,5 +29,14 @@ export default {
         console.log(error)
       }
     }
+    // async GET_README (store, { id, owner, repo }) {
+    //   try {
+    //     const { data } = await readmeRepo({ owner, repo })
+    //     console.log(data)
+    //   } catch (error) {
+    //     console.log(error)
+    //     throw error
+    //   }
+    // }
   }
 }

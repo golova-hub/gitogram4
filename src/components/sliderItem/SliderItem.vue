@@ -1,7 +1,7 @@
 <template>
-  <div class="slider-item" :class="{ active }">
+  <div :class="['slider-item', { active: isActive }]">
     <div class="slide-head">
-      <progress-bar :active="active"></progress-bar>
+      <progress-bar :class="{active: isActive}"></progress-bar>
       <div class="slide-container">
         <post-user-profile :postAvatar="postAvatar"
             :postLogin="postLogin"></post-user-profile>
@@ -65,6 +65,15 @@ export default {
     postLogin: {
       type: String,
       requaired: true
+    },
+    isActive: {
+      type: Boolean,
+      default: false
+    },
+    sliderIndex: {
+      type: Number,
+      required: true,
+      default: 1
     }
   }
 }

@@ -23,9 +23,11 @@
      <!-- <pre>{{$store.state.items}}</pre> -->
      <div class="stories-container">
       <ul class="stories">
-        <li class="stories-item" v-for="item in $store.state.items.items" :key="item.id">
-          <slider-item active
-          v-bind="getPostsData(item)"></slider-item>
+        <li class="stories-item" v-for="(item, index) in $store.state.items.items" :key="item.id">
+          <slider-item
+          v-bind="getPostsData(item)"
+          :sliderIndex="index"
+          :isActive="index === activeSliderIndex"></slider-item>
         </li>
       </ul>
      </div>
@@ -45,10 +47,18 @@ export default {
     IconComp,
     SliderItem
   },
+  data () {
+    return {
+      activeSliderIndex: 0
+    }
+  },
   // computed: {
   //   ...mapState({
   //     repos: (state) => state.readme
   //   })
+  // },
+  // mounted () {
+  //   this.setInitialPosition()
   // },
   // ловим пользовательское событие из дочернего компонента
   methods: {
@@ -67,6 +77,7 @@ export default {
   },
   created () {
     this.$store.dispatch('items/GET_USER_DATA')
+    this.$store.dispatch('readme/GET_README')
   }
 }
 </script>

@@ -18,10 +18,19 @@ export default {
   },
   actions: {
     // Заполнение списка репозиториев
-    async fetchRepositories ({ commit }) {
-      const repos = (await getRepoReadme()).data
-      console.log(repos)
-      commit('SET_REPOS', repos)
+    // async fetchRepositories ({ commit }) {
+    //   const repos = (await getRepoReadme()).data
+    //   console.log(repos)
+    //   commit('SET_REPOS', repos)
+    // }
+    async GET_README (store, { id, owner, repo }) {
+      try {
+        const { data } = await getRepoReadme({ owner, repo })
+        console.log(data)
+      } catch (error) {
+        console.log(error)
+        throw error
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
-  <div :class="{ active }" class="progress-bar">
+  <!-- <div :active={active} class="progress-bar"> -->
+  <div :class="['progress-bar', { active: active }]">
     <!-- по ref обращаться будем к индикатору загрузки -->
     <div ref="indicator" class="indicator"></div>
   </div>
@@ -11,6 +12,12 @@ export default {
   data () {
     return {
       active: false
+    }
+  },
+  props: {
+    isActive: {
+      type: Boolean,
+      default: false
     }
   },
   // отследить завершение transition и выполнить далее действия
