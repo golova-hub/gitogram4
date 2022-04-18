@@ -24,7 +24,7 @@
      <div class="stories-container">
       <ul class="stories">
         <li class="stories-item" v-for="(item, index) in $store.state.items.items" :key="item.id">
-          <slider-item
+          <slider-item active
           v-bind="getPostsData(item)"
           :sliderIndex="index"
           :isActive="index === activeSliderIndex"></slider-item>

@@ -1,7 +1,9 @@
 <template>
-  <div :class="['slider-item', { active: isActive }]">
+  <!-- <div :class="['slider-item', { active: isActive }]"> -->
+  <div :class="{ active: isActive }" class="slider-item">
     <div class="slide-head">
-      <progress-bar :class="{active: isActive}"></progress-bar>
+      <!-- <progress-bar :active='active'></progress-bar> -->
+      <progress-bar :active='isActive'></progress-bar>
       <div class="slide-container">
         <post-user-profile :postAvatar="postAvatar"
             :postLogin="postLogin"></post-user-profile>
@@ -28,6 +30,18 @@
         <btn-main>Follow</btn-main>
       </div>
     </div>
+    <template v-if="isActive">
+        <button class="btn btn-next">
+          <div class="icon-arrow">
+            <icon-comp name="ArrowIcon"/>
+            </div>
+        </button>
+        <button class="btn btn-prev">
+          <div class="icon-arrow">
+            <icon-comp name="ArrowIcon"/>
+          </div>
+      </button>
+    </template>
   </div>
 </template>
 
@@ -35,13 +49,15 @@
 import BtnMain from '../btnMain/BtnMain.vue'
 import PostUserProfile from '../postUserProfile/PostUserProfile.vue'
 import { ProgressBar } from '../progressBar'
+import { IconComp } from '../../icons/'
 
 export default {
   name: 'SliderItem',
   components: {
     ProgressBar,
     PostUserProfile,
-    BtnMain
+    BtnMain,
+    IconComp
   },
   // data () {
   //   return {

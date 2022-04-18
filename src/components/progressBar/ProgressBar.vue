@@ -1,6 +1,7 @@
 <template>
-  <!-- <div :active={active} class="progress-bar"> -->
-  <div :class="['progress-bar', { active: active }]">
+  <!-- <div :active='isActive' class="progress-bar"> -->
+  <div :class="['progress-bar', { active: active }]" >
+    <!-- <div class="progress-bar" :active='active'> -->
     <!-- по ref обращаться будем к индикатору загрузки -->
     <div ref="indicator" class="indicator"></div>
   </div>
@@ -34,8 +35,11 @@ export default {
     //   this.active = true
     //   // console.log('inside nextTick callback:')
     // })
+    // setTimeout(() => {
+    //   this.active = true
+    // }, 0)
     setTimeout(() => {
-      this.active = true
+      this.active = true && this.isActive
     }, 0)
     // навесим слушатель на событие окошчание загрузки и передадим в метод emit
     this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)
