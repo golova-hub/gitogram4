@@ -3,7 +3,7 @@
   <div :class="{ active: isActive }" class="slider-item">
     <div class="slide-head">
       <!-- <progress-bar :active='active'></progress-bar> -->
-      <progress-bar :active='isActive'></progress-bar>
+      <progress-bar :isActive='isActive'></progress-bar>
       <div class="slide-container">
         <post-user-profile :postAvatar="postAvatar"
             :postLogin="postLogin"></post-user-profile>
@@ -31,12 +31,13 @@
       </div>
     </div>
     <template v-if="isActive">
-        <button class="btn btn-next">
+      <!-- в зависимости от зачения пропов, ввыводим кнопки -->
+        <button v-if="btnsShown.includes('next')" class="btn btn-next" @click="$emit('nextSlide')">
           <div class="icon-arrow">
             <icon-comp name="ArrowIcon"/>
             </div>
         </button>
-        <button class="btn btn-prev">
+        <button v-if="btnsShown.includes('prev')" class="btn btn-prev" @click="$emit('prevSlide')">
           <div class="icon-arrow">
             <icon-comp name="ArrowIcon"/>
           </div>
@@ -66,6 +67,7 @@ export default {
   //     sliderBtnText: 'Follow'
   //   }
   // },
+  emits: ['prevSlide', 'nextSlide'],
   props: {
     active: Boolean,
     loading: Boolean,
@@ -90,6 +92,15 @@ export default {
       type: Number,
       required: true,
       default: 1
+    },
+    // чтобы сккрывать кнопки на крайних слайдах
+    // если передан весь массив, показываем обе кнопки
+    btnsShown: {
+      type: Array,
+      default: () => ['next', 'prev']
+      // validator(value) ={
+      //   return value.every((item) => item === 'netx' || item === 'prev')
+      // }
     }
   }
 }

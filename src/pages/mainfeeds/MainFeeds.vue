@@ -90,6 +90,15 @@ export default {
   created () {
     this.$store.dispatch('items/GET_USER_DATA')
   }
+  // async getUser () {
+  //   try {
+  //     const response = await fetch('https://api.github.com/user')
+  //     const data = await response.json
+  //     console.log(data)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 }
 </script>
 <style scoped lang="scss" src="./MainFeeds.scss"></style>

@@ -39,7 +39,7 @@ export default {
     //   this.active = true
     // }, 0)
     setTimeout(() => {
-      this.active = true && this.isActive
+      this.active = this.isActive
     }, 0)
     // навесим слушатель на событие окошчание загрузки и передадим в метод emit
     this.$refs.indicator.addEventListener('transitionend', this.emitOnFinish)

@@ -7,8 +7,8 @@ export const getRepoReadme = ({ owner, repo }) => {
     // headers: {
     //   accept: 'application/vnd.github.v3.html+json'
     // },
-    url: `/repos/${owner}/${repo}/readme`,
-    headers: contentHeader
-    // url: '/repos/golova-hub/gitogram4/readme'
+    // url: `/repos/${owner}/${repo}/readme`,
+    headers: contentHeader,
+    url: '/repos/golova-hub/gitogram4/readme'
   })
 }
