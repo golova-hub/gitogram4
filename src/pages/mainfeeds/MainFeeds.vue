@@ -2,6 +2,7 @@
   <div class="topline">
     <top-line>
       <template #headline>
+        <button @click="getUser()">get user</button>
        <div class="icon-logo">
          <icon-comp name="LogoIcon"/>
         </div>
@@ -83,6 +84,22 @@ export default {
         postUsername: item.name,
         postDescription: item.description,
         postLogin: item.owner.login
+      }
+    },
+    // авторизация - тут полученный токкен передаем в виде заголовка
+    // при помощи библиотеки axios можно сразу устаовить все заголовки запросов
+    async getUser () {
+      try {
+        const response = await fetch('https://api.github.com/user', {
+          headder: {
+            Authorization: `token ${localStorage.getItem('token')}`
+          }
+        })
+        const data = await response.json()
+        const { token } = data
+        console.log(token)
+      } catch (error) {
+        console.log(error)
       }
     }
   },

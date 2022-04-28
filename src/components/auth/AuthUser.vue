@@ -42,15 +42,6 @@ export default {
       params.append('scope', 'repo:status read:user')
       window.location.href = `${githubAuthApi}?${params}`
     }
-    // async getUser () {
-    //   try {
-    //     const response = await fetch('https://api.github.com/user')
-    //     const data = await response.json
-    //     console.log(data)
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
   },
   // нас будет перенаправлять назад, поэтому будут срабатывать хуки
   // проверим есть ли код
@@ -62,7 +53,7 @@ export default {
         // передаем запрос на обмен кода на токен, надо делать с сервера - сейчасс с локальной машины
         const response = await fetch('https://webdev-api.loftschool.com/github', {
           method: 'POST',
-          // mode: 'cors',
+          mode: 'cors',
           headers: {
             // если используется библиотека, этот заголовок будет передан автоматически
             'Content-type': 'application/json'
@@ -76,8 +67,15 @@ export default {
         // нам вернеется токен
         // при запросе с fetch api необходимо преобразовать ответ
         // console.log(response)
-        const { token } = await response.json
-        console.log({ token })
+        // const { token } = response
+        // console.log({ token })
+        const json = await response.json()
+        const { token } = json
+        // console.log(token)
+        // чтобы использовать токен на других страничках, надо сохранить
+        localStorage.setItem('token', token)
+        // при удачном логине перенаправить пользователя на нужную страницу внутри
+        this.$router.replace({ path: '/' })
       } catch (error) {
         console.log(error)
       }
