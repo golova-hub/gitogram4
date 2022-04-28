@@ -1,5 +1,5 @@
+/* eslint-disable */
 import * as api from '../../api'
-// import { readmeRepo } from '../../api/rest/readmeRepo'
 
 export default {
   namespaced: true,

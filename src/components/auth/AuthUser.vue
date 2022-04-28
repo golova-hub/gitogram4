@@ -77,6 +77,7 @@ export default {
         // при удачном логине перенаправить пользователя на нужную страницу внутри
         this.$router.replace({ path: '/' })
       } catch (error) {
+        // eslint-disable-next-line
         console.log(error)
       }
     }

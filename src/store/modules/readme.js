@@ -1,4 +1,5 @@
 // import { getRepositories } from '../../api/rest/searchRepo'
+/* eslint-disable */
 import { getRepoReadme } from '../../api/rest/readmeRepo'
 
 export default {

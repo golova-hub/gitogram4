@@ -97,8 +97,10 @@ export default {
         })
         const data = await response.json()
         const { token } = data
+        // eslint-disable-next-line
         console.log(token)
       } catch (error) {
+        // eslint-disable-next-line
         console.log(error)
       }
     }
