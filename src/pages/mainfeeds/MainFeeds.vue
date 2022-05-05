@@ -2,7 +2,7 @@
   <div class="topline">
     <top-line>
       <template #headline>
-        <button @click="getUser()">get user</button>
+        <!-- <button @click="getUser()">get user</button> -->
        <div class="icon-logo">
          <icon-comp name="LogoIcon"/>
         </div>

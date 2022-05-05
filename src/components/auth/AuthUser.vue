@@ -22,9 +22,8 @@
 
 <script>
 import { IconComp } from '../../icons/'
-
-const clientId = 'ae6368b837d83022b977'
-const clientSecret = '17dac71d7f3adfdbece7719d87699b214e2ffe25'
+// в файл env убираем свои ключи, чтобы не светить
+import env from '../../../env'
 
 export default {
   name: 'AuthUser',
@@ -37,7 +36,7 @@ export default {
       const githubAuthApi = 'https://github.com/login/oauth/authorize'
       // показать какое приложение будет запрашивать доступ, передаем сюда clientId
       const params = new URLSearchParams()
-      params.append('client_id', clientId)
+      params.append('client_id', env.clientId)
       // набор данных, к которым приложение получит доступ, читай на гитхаб
       params.append('scope', 'repo:status read:user')
       window.location.href = `${githubAuthApi}?${params}`
@@ -59,9 +58,9 @@ export default {
             'Content-type': 'application/json'
           },
           body: JSON.stringify({
-            clientId,
+            clientId: env.clientId,
             code,
-            clientSecret
+            clientSecret: env.clientSecret
           })
         })
         // нам вернеется токен

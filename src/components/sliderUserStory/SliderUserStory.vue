@@ -68,7 +68,9 @@ export default {
     }
   },
   mounted () {
-    // console.log(this.$refs.slider_cont.clientWidth)
+    // ширина слайда
+    // console.log(this.$refs.item[0].clientWidth)
+    this.getSliderItemWidth()
   },
   // ловим пользовательское событие из дочернего компонента
   methods: {
@@ -84,13 +86,35 @@ export default {
     handleSlide (dir) {
       this.$emit('handleSlide', dir)
       // console.log(dir)
+    },
+    getSliderItemWidth (item) {
+      const itemWidth = parseInt(this.$refs.item[0].clientWidth)
+      return itemWidth
+      // console.log(itemWidth)
+    },
+    setIniPosition () {
+      const { slider } = this.$refs
+      this.activeSliderIndex = this.items.findIndex((item) => {
+        return item.id.toString() === this.$route.params.id
+      })
+      const width = this.$refs.item[0].clientWidth
+      const position = width * this.activeSliderIndex * -1
+      slider.style.transform = `translateX(${position}px)`
+    },
+    changeSliderItem (dir) {
+      const { slider, item } = this.$refs
+      const width = this.getSliderItemWidth(item[0])
+      const sign = -1
+      dir === 'left'
+        ? this.activeSliderIndex--
+        : this.activeSliderIndex++
+      const position = width * this.activeSliderIndex * sign
+      slider.style.transform = `translateX(${position}px)`
     }
   },
   created () {
     this.$store.dispatch('items/GET_USER_DATA')
     // this.$store.dispatch('readme/GET_README')
-    // const width = this.$refs.item
-    // console.log('width' + this.$refs.item[0].clientWidth)
   }
 }
 </script>
