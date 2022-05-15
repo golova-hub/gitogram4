@@ -76,6 +76,15 @@ export default {
       requared: true,
       default: () => ({})
     },
+    // чтобы скрывать кнопки на крайних слайдах
+    // если передан весь массив, показываем обе кнопки
+    btnsShown: {
+      type: Array,
+      default: () => ['next', 'prev'],
+      validator (value) {
+        return value.every((item) => item === 'next' || item === 'prev')
+      }
+    },
     postAvatar: {
       type: String,
       requaired: true
@@ -92,15 +101,6 @@ export default {
       type: Number,
       required: true,
       default: 1
-    },
-    // чтобы сккрывать кнопки на крайних слайдах
-    // если передан весь массив, показываем обе кнопки
-    btnsShown: {
-      type: Array,
-      default: () => ['next', 'prev']
-      // validator(value) ={
-      //   return value.every((item) => item === 'netx' || item === 'prev')
-      // }
     }
   }
 }
