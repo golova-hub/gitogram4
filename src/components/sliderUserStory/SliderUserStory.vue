@@ -28,8 +28,8 @@
           v-bind="getPostsData(item)"
           :isActive="index === activeSliderIndex"
           :btnsShown="activeBtns"
-          @nextSlide="handleSlide(activeSliderIndex + 1)"
-          @prevSlide="handleSlide(activeSliderIndex - 1)"
+          @prevSlider="prevSlider()"
+          @nextSlider="nextSlider()"
           ></slider-item>
         </li>
       </ul>
@@ -39,6 +39,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { IconComp } from '../../icons/'
 import SliderItem from '../sliderItem/SliderItem.vue'
 // import { createNamespacedHelpers } from 'vuex'
@@ -50,12 +51,10 @@ export default {
     IconComp,
     SliderItem
   },
-  emits: ['handleSlide', 'prevSlide', 'nextSlide'],
+  emits: ['handleSlide', 'prevSlider', 'nextSlider'],
   data () {
     return {
-      activeSliderIndex: 2
-      // sliderIndex: 0,
-      // sliderPosition: 0
+      activeSliderIndex: 6
     }
   },
   computed: {
@@ -72,6 +71,9 @@ export default {
   },
   // ловим пользовательское событие из дочернего компонента
   methods: {
+    ...mapActions({
+      // fetchReadme: 'trendings/fetchReadme'
+    }),
     getPostsData (item) {
       return {
         postId: item.id,
@@ -92,33 +94,29 @@ export default {
       // console.log(itemWidth)
     },
     setIniPosition () {
+      this.setNewPosition()
+    },
+    nextSlider (activeSlider) {
+      const activeSliderIndex = this.activeSliderIndex++
+      this.setNewPosition()
+      return activeSliderIndex
+    },
+    prevSlider (activeSlider) {
+      const activeSliderIndex = this.activeSliderIndex--
+      this.setNewPosition()
+      return activeSliderIndex
+    },
+    setNewPosition () {
       const { slider } = this.$refs // получаем блок-обертку слайдов
-      // const position = slider.getBoundingClientRect().left
-      // console.log(positionIni) // получаем отступ слева от окна браузера
-      // slider.style.left === `(50% - itemWidth - 40)px`
-
-      // this.activeSliderIndex = this.items.findIndex((item) => {
-      //   return item.id.toString() === this.$route.params.id
-      // })
-      const width = this.$refs.item[0].clientWidth // ширина слайда и отступы
-      const position = width * this.activeSliderIndex * -1 // считаем на сколько пикселеей сдвинуть блок
-      // console.log(position)
+      // const activeSlider = this.activeSlider
+      const width = this.$refs.item[0].clientWidth
+      const position = width * this.activeSliderIndex * -1 // считаем на сколько пикселей сдвинуть блок
       slider.style.transform = `translateX(${position}px)`
     }
-    // changeSliderItem (dir) {
-    //   const { slider, item } = this.$refs
-    //   const width = this.getSliderItemWidth(item[this.activeSliderIndex])
-    //   const sign = -1
-    //   dir === 'left'
-    //     ? this.activeSliderIndex--
-    //     : this.activeSliderIndex++
-    //   const position = width * this.activeSliderIndex * sign
-    //   slider.style.transform = `translateX(${position}px)`
-    // }
   },
   created () {
     this.$store.dispatch('items/GET_USER_DATA')
-    // this.$store.dispatch('readme/GET_README')
+    // this.$store.dispatch('items/GET_README')
   }
 }
 </script>

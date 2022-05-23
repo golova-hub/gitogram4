@@ -29,7 +29,18 @@ export default {
         console.log(error)
       }
     }
+    // async fetchReadme( store, {id, owner, repo} ){
+    //   // console.log(id, owner, repo)
+    //   try {
+    //     const { data } = await api.readmeRepo.getRepoReadme({ owner, repo })
+    //     console.log(data)
+    //   } catch (error) {
+    //     console.log(error)
+    //     throw error
+    //   }
+    // }
     // async GET_README (store, { id, owner, repo }) {
+    //   console.log(id, owner, repo)
     //   try {
     //     const { data } = await readmeRepo({ owner, repo })
     //     console.log(data)

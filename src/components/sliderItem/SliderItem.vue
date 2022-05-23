@@ -32,12 +32,12 @@
     </div>
     <template v-if="isActive">
       <!-- в зависимости от зачения пропов, ввыводим кнопки -->
-        <button v-if="btnsShown.includes('next')" class="btn btn-next" @click="$emit('nextSlide')">
+        <button v-if="btnsShown.includes('next')" class="btn btn-next" @click="$emit('nextSlider')">
           <div class="icon-arrow">
             <icon-comp name="ArrowIcon"/>
             </div>
         </button>
-        <button v-if="btnsShown.includes('prev')" class="btn btn-prev" @click="$emit('prevSlide')">
+        <button v-if="btnsShown.includes('prev')" class="btn btn-prev" @click="$emit('prevSlider')">
           <div class="icon-arrow">
             <icon-comp name="ArrowIcon"/>
           </div>
@@ -60,14 +60,7 @@ export default {
     BtnMain,
     IconComp
   },
-  // data () {
-  //   return {
-  //     postAvatar: 'https://picsum.photos/300/300',
-  //     postUsername: 'joshua_l',
-  //     sliderBtnText: 'Follow'
-  //   }
-  // },
-  emits: ['prevSlide', 'nextSlide'],
+  emits: ['prevSlider', 'nextSlider'],
   props: {
     active: Boolean,
     loading: Boolean,
@@ -96,12 +89,10 @@ export default {
     isActive: {
       type: Boolean,
       default: false
-    },
-    sliderIndex: {
-      type: Number,
-      required: true,
-      default: 1
     }
+  },
+  created () {
+    this.$store.dispatch('items/GET_README')
   }
 }
 </script>
